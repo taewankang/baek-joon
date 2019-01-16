@@ -1,3 +1,4 @@
+11365
 #include<iostream>
 #include<string>
 #include<string.h>
@@ -9,7 +10,7 @@ int main(void) {
 		if (str == "END")
 			break;
 
-		for (int i = (str.length() -1); i >= 0; i--) {
+		for (int i = (str.length() -1); i >= 0; i--) {		//문자열의 뒤에서부터 출력
 			cout << str.at(i);
 		}
 		cout << endl;
@@ -17,4 +18,3 @@ int main(void) {
 	system("pause");
 	return 0;
 }
-
