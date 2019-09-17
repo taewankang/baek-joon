@@ -5,13 +5,6 @@ int vec[10001][102] = { 0, };
 vector<int> input;
 int N, k, n;
 int minimum = 10002, min_index = 0;
-int minimize(int num) {			//한 줄의 동전 총 개수를 구하는 함수
-	int result = 0;
-	for (int i = 1; i <= N; i++) {
-		result += vec[num][i];
-	}
-	return result;
-}
 
 void dp(int num) {
 	bool start = true;
