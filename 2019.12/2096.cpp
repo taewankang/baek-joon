@@ -1,110 +1,56 @@
 #include<iostream>
 #include<vector>
-#include<queue>
+#include<algorithm>
 using namespace std;
-vector<pair<int, int>> virus_location;
-int empty_num = 0, virus_num = 0;
-int N, M, n, result = 987654321;
-vector<bool> selected;
-int arr_x[4] = { 1, -1, 0, 0 };
-int arr_y[4] = { 0, 0, 1, -1 };
-int all_case = 0, fail_case = 0, activated = 0;
+int N;
+vector<int> small(4), big(4);
+int n1, n2, n3;
 
-void bfs(vector<vector<int>> vec) {
-	queue<pair<int, int>> q;
-	int counting = 0;
-	int minimum = 0;
-	for (int i = 0; i < selected.size(); i++) {
-		if (selected[i] == true) {
-			q.push({ virus_location[i + 1].first, virus_location[i + 1].second });
-			vec[virus_location[i + 1].first][virus_location[i + 1].second] = 1;
-		}
-	}
-
-	while (!q.empty()) {
-		int y = q.front().first;
-		int x = q.front().second;
-		q.pop();
-		for (int i = 0; i < 4; i++) {
-			int next_y = y + arr_y[i];
-			int next_x = x + arr_x[i];
-			if (empty_num == counting) {
-				if (result > minimum)
-					result = minimum;
-				return;
-			}
-
-			if (next_x > 0 && next_x <= N && next_y > 0 && next_y <= N && (vec[next_y][next_x] == 0 || vec[next_y][next_x] == -2)) {
-				if (vec[next_y][next_x] == -2)
-					counting--;
-				q.push({ next_y, next_x });
-				vec[next_y][next_x] = vec[y][x] + 1;
-				if (vec[next_y][next_x] > minimum)
-					minimum = vec[next_y][next_x];
-				counting++;
-			}
-		}
-		if (empty_num == counting) {
-			if (result > minimum)
-				result = minimum;
-		}
-	}
-	if (empty_num != counting)
-		fail_case++;
-
+void smallest(vector<int>& vec) {
+	n1 = min(small[1], small[2]) + vec[1];
+	n2 = min(small[1], min(small[2], small[3])) + vec[2];
+	n3 = min(small[2], small[3]) + vec[3];
+	small[1] = n1; small[2] = n2; small[3] = n3;
 }
 
-void virus_select(vector<vector<int>>& vec, int idx, int cnt) {
-	if (M == cnt) {
-		bfs(vec);
-		all_case++;
-		return;
-	}
-	for (int i = idx; i < virus_num; i++) {
-		if (selected[i] == true)	continue;
-		selected[i] = true;
-		virus_select(vec, i, cnt + 1);
-		selected[i] = false;
-	}
+void biggest(vector<int>& vec) {
+	n1 = max(big[1], big[2]) + vec[1];
+	n2 = max(big[1], max(big[2], big[3])) + vec[2];
+	n3 = max(big[2], big[3]) + vec[3];
+	big[1] = n1; big[2] = n2; big[3] = n3;
 }
 
 int main(void) {
 	cin.tie(NULL);
 	ios::sync_with_stdio(false);
-	cin >> N >> M;
-	vector<vector<int>> vec(N + 1);
-	virus_location.push_back({ 0, 0 });
-	for (int i = 1; i <= N; i++) {
-		vec[i].push_back(0);
-		for (int j = 1; j <= N; j++) {
+	int n;
+	cin >> N;
+	vector<int> vec(4);
+
+	for (int i = 1; i <= 3; i++) {
+		cin >> n;
+		small[i] = n;
+		big[i] = n;
+	}
+
+	for (int i = 2; i <= N; i++) {
+		for (int j = 1; j <= 3; j++) {
 			cin >> n;
-			if (n == 2) {
-				virus_num++;
-				virus_location.push_back({ i, j });
-				selected.push_back(false);
-				vec[i].push_back(-2);
-				continue;
-			}
-			else if (n == 1) {
-				vec[i].push_back(-1);
-				continue;
-			}
-			if (n == 0)
-				empty_num++;
-			vec[i].push_back(n);
+			vec[j] = n;
 		}
-	}
-	if (empty_num == 0) {
-		cout << 0 << "\n";
-		return 0;
+		smallest(vec);
+		biggest(vec);
 	}
 
-	virus_select(vec, 0, 0);
+	int big_num = 0, small_num = 987654321;
+	for (int i = 1; i <= 3; i++) {
+		if (big_num < big[i])
+			big_num = big[i];
+		if (small_num > small[i])
+			small_num = small[i];
+	}
+	cout << big_num << " " << small_num << endl;
 
-	if (all_case != fail_case)
-		cout << result - 1 << endl;
-	else
-		cout << "-1\n";
 	system("pause");
 	return 0;
 }
