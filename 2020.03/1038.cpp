@@ -10,10 +10,11 @@ int main(void)
 {
 	cin.tie(NULL);
 	ios::sync_with_stdio(false);
-	int N;
+	long long N;
 	long long num = 0;
 	cin >> N;
 	queue<int> q;
+	cout << N;
 	if (N == 1022) {
 		cout << "9876543210\n";
 		return 0;
