@@ -1,5 +1,5 @@
 /*
-	점화식: DP[K][N] = DP[K - 1][N - vec[K]] + DP[k - 1][N + vec[K]]
+	점화식: DP[K][N] = DP[K - 1][N - vec[K - 1]] + DP[k - 1][N + vec[K - 1]]
 */
 
 #include<iostream>
