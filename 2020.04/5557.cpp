@@ -5,29 +5,35 @@
 #include<iostream>
 #include<vector>
 using namespace std;
-int N;
-vector<int> vec(101);
-long long arr[101][21] = { 0, };
+long long N, dp[101][21] = { 0, };
+vector<int> vec;
+
+void input() {
+	int n;
+	for (int i = 0; i < N; i++) {
+		cin >> n;
+		vec.push_back(n);
+	}
+}
+
+void make_dp() {
+	dp[0][vec[0]] = 1;
+	for (int i = 0; i < N - 2; i++) {
+		for (int j = 0; j < 21; j++) {
+			if (dp[i][j]) {
+				j - vec[i + 1] >= 0 ? dp[i + 1][j - vec[i + 1]] += dp[i][j] : NULL;
+				j + vec[i + 1] <= 20 ? dp[i + 1][j + vec[i + 1]] += dp[i][j] : NULL;
+			}
+		}
+	}
+}
+
 int main(void) {
 	cin.tie(NULL);
 	ios::sync_with_stdio(false);
 	cin >> N;
-	for (int i = 1; i <= N; i++)
-		cin >> vec[i];
-
-	arr[1][vec[1]] = 1;
-	for (int i = 2; i < N; i++) {
-		for (int j = 0; j <= 20; j++) {
-			if (arr[i - 1][j] != 0) {
-				if (j - vec[i] >= 0)
-					arr[i][j - vec[i]] += arr[i - 1][j];
-				if (j + vec[i] <= 20)
-					arr[i][j + vec[i]] += arr[i - 1][j];
-			}
-		}
-	}
-
-	cout << arr[N - 1][vec[N]] << endl;
-
+	input();
+	make_dp();
+	cout << dp[N - 2][vec[N - 1]] << endl;
 	return 0;
 }
