@@ -1,3 +1,7 @@
+//Baaaaaaaaaduk2 (Easy) 
+/*
+    돌 2개를 놓아 상대 돌을 최대한 많이 죽이는 위치를 찾아라
+*/
 #include <iostream>
 #include <vector>
 #include <queue>

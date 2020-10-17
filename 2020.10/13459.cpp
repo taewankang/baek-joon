@@ -1,3 +1,4 @@
+// 구슬 탈출
 #include <iostream>
 #include <vector>
 #include <queue>
@@ -11,6 +12,7 @@ struct Ball{
 };
 bool redFinish = false, blueFinish = false;
 Red startRed; Blue startBlue; Goal goal;
+
 vector<vector<char>> reset(int N, int M) {
     vector<vector<char>> vec(N);
     for(int i = 0; i < N; i++) {

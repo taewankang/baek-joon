@@ -1,3 +1,4 @@
+// 새로운 게임
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -9,6 +10,7 @@ int dy[5] = {0, 0, 0, -1, 1};
 int dx[5] = {0, 1, -1, 0, 0};
 int N, K;
 int map[11][13][13] = {0, };
+
 Mal makeMal(int y, int x, int direction) {
     Mal mal = {y, x, direction};
     return mal;
@@ -120,6 +122,7 @@ int main(void){
             } else idx++;
         }
     }
+
     while(1) {
         move();
         if(check()) break;

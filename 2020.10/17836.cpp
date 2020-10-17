@@ -1,3 +1,4 @@
+//공주님을 구해라!
 #include <iostream>
 #include <vector>
 #include <queue>
@@ -25,7 +26,6 @@ vector<vector<int>> bfs() {
         int y = q.front().first.first;
         int x = q.front().first.second;
         int cnt = q.front().second;
-        // cout << y << " " << x << " " << cnt << endl;
         q.pop();
         for(int i = 0; i < 4; i++) {
             int ny = y + dy[i];
@@ -61,7 +61,6 @@ int main(void){
         if(vec[N][M] == -1) answer = vec[gram.y][gram.x] + (N - gram.y + M - gram.x); 
         else answer = min(vec[N][M], vec[gram.y][gram.x] + (N - gram.y + M - gram.x));
     }
-
 
     if(answer == -1 || answer > T) cout << "Fail\n";
     else cout << answer << endl;

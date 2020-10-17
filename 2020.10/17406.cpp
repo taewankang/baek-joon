@@ -1,3 +1,4 @@
+// 배열 돌리기4
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -23,10 +24,7 @@ vector<vector<int>> rotate(vector<vector<int>> map, vector<int> v) {
     int x2 = v[1] + v[2];
     while(y1 < y2 && x1 < x2) {
         map = start(map, y1, x1, y2, x2);
-        y1++;
-        x1++;
-        y2--;
-        x2--;
+        y1++; x1++; y2--; x2--;
     }
     return map;
 }

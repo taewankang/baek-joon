@@ -1,3 +1,4 @@
+//경사로
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -12,7 +13,7 @@ bool isRowValid(int idx, bool isRow) {
     if(isRow) for(int i = 1; i <= N; i++)  temp.push_back(map[i][idx]);
     else for(int i = 1; i <= N; i++) temp.push_back(map[idx][i]);
     for(int i = 1; i < N; i++) {
-        if(abs(temp[i] - temp[i - 1]) > 1) return false;
+        if(abs(temp[i] - temp[i - 1]) > 1) return false;    //높이의 차이가 1보다 크다면 장애물 설치 불가
         else if(temp[i] - temp[i - 1] == -1) {   //앞이 더 크다면 오르막길 장애물 설치
             if(i + L - 1 >= N) return false;
             for(int j = i; j <= i + L - 1; j++) {

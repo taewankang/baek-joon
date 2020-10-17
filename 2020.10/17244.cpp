@@ -1,3 +1,7 @@
+// 아맞다우산
+/*
+    어떤 물건을 먼저 집고 나가야 적게 걷고 밖으로 나갈 수 있는가
+*/
 #include<iostream>
 #include<vector>
 #include<queue>

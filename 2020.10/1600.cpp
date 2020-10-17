@@ -1,4 +1,7 @@
 //말이 되고픈 원숭이
+/*
+    원숭이가 (1, 1)에서 출발해서 (H, W)로 이동할 수 있는가?
+*/
 #include <iostream>
 #include <vector>
 #include <queue>
@@ -25,7 +28,7 @@ void input() {
     }
 }
 
-void horseMoving() {
+void horseMoving() {    //말이 이동할 수 있는 위치
     horse.push_back({-1, -2});
     horse.push_back({1, -2});
     horse.push_back({2, -1});

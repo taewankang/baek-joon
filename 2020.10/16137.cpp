@@ -1,3 +1,4 @@
+//견우와 직녀
 #include <iostream>
 #include <vector>
 #include <queue>
@@ -49,10 +50,10 @@ void bfs(int y, int x, bool used, int depth) {
     Data d = {1, 1, false};
     q.push(make_pair(d, 0));
     int visit[21][21];
-    for(int i = 1; i <= N; i++) {
+    for(int i = 1; i <= N; i++) 
         for(int j = 1; j <= N; j++) 
             visit[i][j] = INF;
-    }
+            
     visit[1][1] = 0;
     while(!q.empty()) {
         Data data = q.front().first;

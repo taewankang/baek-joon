@@ -1,3 +1,4 @@
+// 벽 부수고 이동하기2
 #include <iostream>
 #include <vector>
 #include <queue>
@@ -5,7 +6,7 @@
 using namespace std;
 int N, M, K;
 vector<vector<int>> map(1001);
-int visit[11][1001][1001] = {0, };
+int visit[11][1001][1001] = {0, };  //벽을 부실 수 있는 개수 => visit[k][i][j]에 적혀진다.
 struct Location {int k, y, x;};
 int dy[4] = {1, -1, 0, 0};
 int dx[4] = {0, 0, 1, -1};
@@ -23,8 +24,7 @@ void bfs() {
         for(int i = 0; i < 4; i++) {
             int nextY = y + dy[i];
             int nextX = x + dx[i];
-            if(nextY < 1 || nextY > N || nextX < 1 || nextX > M) 
-                continue;
+            if(nextY < 1 || nextY > N || nextX < 1 || nextX > M) continue;
             if(!visit[k][nextY][nextX] && map[nextY][nextX] == '0') {
                 visit[k][nextY][nextX] = cnt + 1;
                 q.push({{k, nextY, nextX}, cnt + 1});
@@ -46,12 +46,15 @@ int main(void){
             map[i].push_back(c);
         }
     }
+
     bfs();
     int answer = 123456789;
-    for(int i = 0; i <= K; i++) {
+
+    for(int i = 0; i <= K; i++) {   //0번 ~ K번 부셨을 때의 최소값을 구한다.
         if(visit[i][N][M] != 0 && answer > visit[i][N][M]) 
             answer = visit[i][N][M];
     }
+
     if(answer == 123456789) answer = -1;
     cout << answer << endl;
     return 0;

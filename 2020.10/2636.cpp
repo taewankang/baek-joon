@@ -1,3 +1,7 @@
+// 치즈
+/*
+    가장 바깥에서부터 만나는 치즈들을 삭제해준다.
+*/
 #include <iostream>
 #include <vector>
 #include <queue>

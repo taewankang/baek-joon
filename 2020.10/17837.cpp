@@ -1,3 +1,4 @@
+//새로운 게임2
 #include <iostream>
 #include <vector>
 #include <algorithm>

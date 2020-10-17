@@ -1,3 +1,4 @@
+// 야구공(그림)
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -8,26 +9,26 @@ vector<vector<int>> map(51);
 int oneGame(vector<int> skill) {
     int outCnt = 0, point = 0;
     vector<int> arr(4, 0);
-    while(outCnt < 3) {
-        if(skill[selected] == 1) {
+    while(outCnt < 3) { //3번 아웃이 될때까지 반복
+        if(skill[selected] == 1) {  //안타
             if(arr[3] == 1) point++;
             arr[3] = arr[2];
             arr[2] = arr[1];
             arr[1] = 1;
-        } else if(skill[selected] == 2) {
+        } else if(skill[selected] == 2) {   //2루타
             if(arr[3] == 1) point++;
             if(arr[2] == 1) point++;
             arr[3] = arr[1];
             arr[2] = 1;
             arr[1] = 0;
-        } else if(skill[selected] == 3 || skill[selected] == 4) {
+        } else if(skill[selected] == 3 || skill[selected] == 4) {   //3루타, 홈런
             for(int i = 1; i < 4; i++) {
                 if(arr[i] == 1) point++;
                 arr[i] = 0;
             }
             if(skill[selected] == 3) arr[3] = 1;
             else point++;
-        } else if(skill[selected] == 0) outCnt++;
+        } else if(skill[selected] == 0) outCnt++;   //아웃
         selected++;
         if(selected > 9) selected -= 9;
     }
@@ -63,9 +64,7 @@ void peopleList(vector<int> people) {
 
 void game() {
     vector<int> people(10);
-    for(int i = 2; i <= 9; i++) {
-        people[i] = i;
-    }
+    for(int i = 2; i <= 9; i++) people[i] = i;
     do{
         peopleList(people);
     }while(next_permutation(people.begin() + 2, people.end()));

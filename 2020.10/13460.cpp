@@ -1,3 +1,4 @@
+// 구슬 탈출 2
 #include <iostream>
 #include <vector>
 #include <queue>
@@ -238,18 +239,14 @@ void bfs(UnionBall unionBall) {
         UnionBall left = moveLeft(red, blue);
         UnionBall right = moveRight(red, blue);
 
-        if(!(red.y == up.red.y && red.x == up.red.x && blue.y == up.blue.y && blue.x == up.blue.x)) { //움직였다면
+        if(!(red.y == up.red.y && red.x == up.red.x && blue.y == up.blue.y && blue.x == up.blue.x))  //움직였다면
             if(check(up.red, up.blue, cnt)) q.push({up, cnt + 1});
-        }
-        if(!((red.y == down.red.y && red.x == down.red.x) && (blue.y == down.blue.y && blue.x == down.blue.x))) {
+        if(!((red.y == down.red.y && red.x == down.red.x) && (blue.y == down.blue.y && blue.x == down.blue.x))) 
             if(check(down.red, down.blue, cnt)) q.push({down, cnt + 1});
-        }
-        if(!((red.y == left.red.y && red.x == left.red.x) && (blue.y == left.blue.y && blue.x == left.blue.x))) {
+        if(!((red.y == left.red.y && red.x == left.red.x) && (blue.y == left.blue.y && blue.x == left.blue.x))) 
             if(check(left.red, left.blue, cnt)) q.push({left, cnt + 1});
-        }
-        if(!((red.y == right.red.y && red.x == right.red.x) && (blue.y == right.blue.y && blue.x == right.blue.x))) {
+        if(!((red.y == right.red.y && red.x == right.red.x) && (blue.y == right.blue.y && blue.x == right.blue.x))) 
             if(check(right.red, right.blue, cnt)) q.push({right, cnt + 1});
-        }
     }
 }
 

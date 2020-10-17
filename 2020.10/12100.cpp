@@ -1,3 +1,4 @@
+//2048(Easy)
 #include <iostream>
 #include <vector>
 #include <queue>
@@ -16,7 +17,7 @@ void check(vector<vector<Block>> vec) {   //가장 큰 값을 찾아주는 함�
     }
 }
 
-vector<vector<Block>> reset(vector<vector<Block>> vec) {
+vector<vector<Block>> reset(vector<vector<Block>> vec) {    //vector값 초기화
     for(int i =1; i <= N; i++) {
         for(int j = 1; j <= N; j++) {
             vec[i][j].value = 0;
@@ -26,7 +27,7 @@ vector<vector<Block>> reset(vector<vector<Block>> vec) {
     return vec;
 }
 
-vector<vector<Block>> moveUp(vector<vector<Block>> vec) {
+vector<vector<Block>> moveUp(vector<vector<Block>> vec) {   //위로 합치기
     vector<vector<Block>> temp(N + 1);
     for(int i = 1; i <= N; i++) {
         for(int j = 1; j <= N; j++) {
@@ -53,7 +54,7 @@ vector<vector<Block>> moveUp(vector<vector<Block>> vec) {
     return vec;
 }
 
-vector<vector<Block>> moveDown(vector<vector<Block>> vec) {
+vector<vector<Block>> moveDown(vector<vector<Block>> vec) {     //아래로 합치기
     vector<vector<Block>> temp(N + 1);
     for(int i = N; i >= 1; i--) {
         for(int j = 1; j <= N; j++) {
@@ -80,7 +81,7 @@ vector<vector<Block>> moveDown(vector<vector<Block>> vec) {
     return vec;
 }
 
-vector<vector<Block>> moveRight(vector<vector<Block>> vec) {
+vector<vector<Block>> moveRight(vector<vector<Block>> vec) {    //오른쪽으로 합치기
     vector<vector<Block>> temp(N + 1);
     for(int i = 1; i <= N; i++) {
         for(int j = N; j >= 1; j--) {
@@ -107,7 +108,7 @@ vector<vector<Block>> moveRight(vector<vector<Block>> vec) {
     return vec;
 }
 
-vector<vector<Block>> moveLeft(vector<vector<Block>> vec) {
+vector<vector<Block>> moveLeft(vector<vector<Block>> vec) { //왼쪽으로 합치기
     vector<vector<Block>> temp(N + 1);
     for(int i = 1; i <= N; i++) {
         for(int j = 1; j <= N; j++) {

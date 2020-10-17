@@ -1,3 +1,4 @@
+//Two Dots
 #include <iostream>
 #include <vector>
 #include <string>
@@ -19,7 +20,7 @@ void dfs(int y, int x, int depth) {
         if(ny < 1 || ny > N || nx < 1 || nx > M) continue;
         if(map[ny][nx] != map[start.y][start.x]) continue;
         if(visit[ny][nx]) {
-            if(depth >= 4 && start.y == ny && start.x == nx) {
+            if(depth >= 4 && start.y == ny && start.x == nx) {  //출발한 지점으로 돌아온다면 사이클이 만들어진 것
                 answer = "Yes";
                 return;
             }

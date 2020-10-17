@@ -30,12 +30,14 @@ bool bfs(vector<int> v, bool select) {
     }
     return false;
 }
+
 void findDiff(vector<int> select, vector<int> nSelect) {
     int stotal = 0, ntotal = 0;
     for(auto iter: select) stotal += people[iter];
     for(auto iter: nSelect) ntotal += people[iter];
     if(abs(stotal - ntotal) < diff) diff = abs(stotal - ntotal);
 }
+
 void isConnect() {
     vector<int> select, nSelect;
     for(int i = 1; i <= N; i++) {
@@ -44,7 +46,6 @@ void isConnect() {
     }
     if(bfs(select, true) && bfs(nSelect, false)) findDiff(select, nSelect);
 }
-
 
 void permutation(int idx, int cnt) {
     if(cnt >= 1 && cnt < N) 
