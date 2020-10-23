@@ -8,6 +8,7 @@ struct Taxi{int y, x, fuel;};
 int answer = 0;
 struct Customer{
     int py, px, dy, dx, distance, cnt;
+    
     bool operator<(const Customer customer) const {
         if(distance > customer.distance) return true;
         else if(distance == customer.distance) {
